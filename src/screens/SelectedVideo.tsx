@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image, Touchable, Linking } from 'react-native'
+import { View, Text, TouchableOpacity, Image, Touchable, Linking, ToastAndroid } from 'react-native'
 import React, { useState } from 'react'
 import { IVideo } from '../../type'
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -17,7 +17,22 @@ const SelectedVideo = ({ _, route }: any) =>
         setIsVideoDownloading(true)
         try
         {
-            await checkPermissionAndDownload(data.title, data.link)
+            const gg = await checkPermissionAndDownload(data.title, data.link, data.id)
+            if (gg)
+            {
+                ToastAndroid.show(
+                    "Download Successfull",
+                    ToastAndroid.BOTTOM
+                )
+            }
+            else
+            {
+                ToastAndroid.show(
+                    "Download Failed",
+                    ToastAndroid.BOTTOM
+                )
+            }
+
         } catch (error)
         {
             console.log(error)
@@ -83,14 +98,11 @@ const SelectedVideo = ({ _, route }: any) =>
                             <Text className='  text-black translate-x-[-10px] '>Download</Text>
                         </View>
                     }
-
-
-
-
-
                 </TouchableOpacity>
 
             </View>
+
+
 
 
         </>
