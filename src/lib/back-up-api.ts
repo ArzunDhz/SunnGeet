@@ -4,11 +4,11 @@ export const getMp3UrlFromRapidApi = async (videoId: string): Promise<string> =>
 {
     const options = {
         method: "GET",
-        url: "https://youtube-mp36.p.rapidapi.com/dl",
+        url: "https://youtube-mp36.p.rapidapi.com/d",
         params: { id: videoId },
         headers: {
-            "X-RapidAPI-Key": 'dcc30b2b2fmshac3b7e241a8fc6cp1061bdjsn8937e7e638cb',
-            "X-RapidAPI-Host": "youtube-mp36.p.rapidapi.com",
+            "X-RapidAPI-Key": '',
+            "X-RapidAPI-Host": "",
         },
     };
     const { data } = await axios.request(options);
